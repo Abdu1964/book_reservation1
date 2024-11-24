@@ -28,18 +28,25 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Step 4: Run tests (optional, if you have test scripts)
-      - name: Run tests
+      # Step 4: Run primary tests
+      - name: Run primary tests
         run: npm test
 
-      # Step 5: Build the project
+      # Step 5: Run a mock "API test" (for demonstration)
+      - name: Run API test
+        run: echo "Running mock API test..." && exit 0
+
+      # Step 6: Run a mock "UI test" (for demonstration)
+      - name: Run UI test
+        run: echo "Running mock UI test..." && exit 0
+
+      # Step 7: Build the project
       - name: Build project
         run: npm run build
 
-      # Step 6: Deploy to GitHub Pages
+      # Step 8: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
-
