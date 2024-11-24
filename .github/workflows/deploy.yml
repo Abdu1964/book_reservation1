@@ -28,25 +28,33 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Step 4: Run primary tests
+      # Step 4: Run tests
       - name: Run primary tests
         run: npm test
 
-      # Step 5: Run a mock "API test" (for demonstration)
+      # Step 5: Mock additional tests
       - name: Run API test
         run: echo "Running mock API test..." && exit 0
-
-      # Step 6: Run a mock "UI test" (for demonstration)
       - name: Run UI test
         run: echo "Running mock UI test..." && exit 0
 
-      # Step 7: Build the project
+      # Step 6: Build the project
       - name: Build project
         run: npm run build
 
-      # Step 8: Deploy to GitHub Pages
+      # Step 7: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+
+      # Step 8: Report Build Status
+      - name: Report build status
+        run: echo "Build and deployment successful!"
+
+      # Step 9: Provide deployment link
+      - name: Deployment Link
+        run: |
+          echo "Your application has been deployed!"
+          echo "Visit: https://abdu1964.github.io/book_reservation1/"
